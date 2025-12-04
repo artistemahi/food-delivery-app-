@@ -1,0 +1,36 @@
+{
+  "name": "w3",
+  "version": "1.0.0",
+  "description": "FOOD DELEIVERY APP",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artistemahi/food-delivery-app-.git"
+  },
+  "keywords": [
+    "food",
+    "deleivery",
+    "app"
+  ],
+  "author": "Mahesh Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artistemahi/food-delivery-app-/issues"
+  },
+  "homepage": "https://github.com/artistemahi/food-delivery-app-#readme",
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "parcel": "^2.16.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  }
+}
