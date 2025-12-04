@@ -2,7 +2,6 @@
   "name": "w3",
   "version": "1.0.0",
   "description": "FOOD DELEIVERY APP",
-  "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
@@ -24,6 +23,7 @@
   },
   "homepage": "https://github.com/artistemahi/food-delivery-app-#readme",
   "devDependencies": {
+    "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "parcel": "^2.16.1",
