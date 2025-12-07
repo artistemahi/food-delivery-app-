@@ -1,4 +1,4 @@
-import { base_Url } from "../utils/constants";
+import {BaseURL} from "../utils/constants";
 type Info = {
   name: string;
   cuisines: string[];
@@ -12,8 +12,6 @@ type ResProps = {
     info: Info;
   };
 };
-const baseURL ={base_Url}
-
 const RestaurantCard: React.FC<ResProps> = (Props) => {
   const { resdata } = Props;
   const { info } = resdata;
@@ -28,7 +26,7 @@ const RestaurantCard: React.FC<ResProps> = (Props) => {
   return (
     <div className="restaurant-card">
       <div className="images">
-        <img className="logoimg" src={baseURL + cloudinaryImageId} alt="" />
+        <img className="logoimg" src={BaseURL + cloudinaryImageId} alt="" />
       </div>
       <h3>{name}</h3>
       <h4>{cuisines.join(",")}</h4>
