@@ -1,4 +1,4 @@
-import reslist from "./../utils/mockdata";
+// import reslist from "./../utils/mockdata";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -17,7 +17,7 @@ const Body: React.FC = () => {
     console.log(json);
     // optional chaining
     setRestaurantList(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
   if (RestaurantList.length === 0) {
