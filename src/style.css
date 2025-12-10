@@ -20,7 +20,7 @@
 .body {
   border: 2px solid rgb(0, 0, 17);
   height: 100%;
-    width: 100%;
+  width: 100%;
   margin-top: 5px;
 }
 .footer {
@@ -44,19 +44,32 @@
 }
 .restaurant-container {
   display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .searchbar {
   margin: 20px;
   border: 0.2px solid black;
   padding: 10px;
 }
-.filterbtn{
+.filterbtn {
   padding: 10px;
-  margin: 20px; 
+  margin: 20px;
   border-radius: 10px;
-  background-color:red;
+  background-color: red;
   color: white;
   font-weight: bold;
+}
+.shimmer-card {
+  background-color: #e0e0e0;
+  width: 400px;
+  height: 250px;
+  margin: 20px;
+  padding: 10px;
+  animation: shimmer 1.5s infinite;
+}
+.shimmer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
