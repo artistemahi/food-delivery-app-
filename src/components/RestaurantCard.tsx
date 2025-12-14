@@ -6,6 +6,7 @@ type Info = {
   avgRating: number;
   deliveryTime: number;
   cloudinaryImageId: string;
+  sla: { deliveryTime: number}
 };
 type ResProps = {
   resdata: {
@@ -19,7 +20,7 @@ const RestaurantCard: React.FC<ResProps> = (Props) => {
     name,
     cuisines,
     avgRating,
-    deliveryTime,
+    sla,
     cloudinaryImageId,
     costForTwo,
   } = info;
@@ -32,7 +33,7 @@ const RestaurantCard: React.FC<ResProps> = (Props) => {
       <h4>{cuisines.join(",")}</h4>
       <h4>{avgRating} stars</h4>
       <h4>{costForTwo}</h4>
-      <h4>{deliveryTime}</h4>
+      <h4>{sla.deliveryTime} mins</h4>
     </div>
   );
 };
