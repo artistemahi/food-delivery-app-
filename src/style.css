@@ -47,11 +47,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.searchbar {
-  margin: 20px;
-  border: 0.2px solid black;
-  padding: 10px;
-}
+
 .filterbtn {
   padding: 10px;
   margin: 20px;
@@ -59,6 +55,8 @@
   background-color: red;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+
 }
 .shimmer-card {
   background-color: #e0e0e0;
@@ -79,6 +77,25 @@
   border-radius: 5px;
   background-color: #4caf50;
   color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+.subHeader{
+  display: flex;
+  justify-content: space-between;
+}
+.searchbar {
+  margin: 20px;
+  /* border: 0.2px solid black; */
+  padding: 10px;
+}
+.searchbtn{
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 100px ;
+  background-color: #fbff13;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   border: none;
   cursor: pointer;

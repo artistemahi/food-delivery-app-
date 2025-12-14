@@ -25,20 +25,26 @@ const Body: React.FC = () => {
   }
   return (
     <div className="body">
-      <div className="filter">
-        <button
-          className="filterbtn"
-          onClick={() => {
-            const filteredList = RestaurantList.filter(
-              (res) => res.info.avgRating > 4.0
-            );
-            setRestaurantList(filteredList);
-          }}
-        >
-          Top Rated Restaurant
-        </button>
+      <div className="subHeader">
+        <div className="filter">
+          <button
+            className="filterbtn"
+            onClick={() => {
+              const filteredList = RestaurantList.filter(
+                (res) => res.info.avgRating > 4.0
+              );
+              setRestaurantList(filteredList);
+            }}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
+        <div className="searchbar">
+          {" "}
+          <input type="text" name="searchinput" id="searchinput" />
+          <button className="searchbtn">search</button>
+        </div>
       </div>
-      <div className="searchbar">Search bar</div>
       <div className="restaurant-container">
         {RestaurantList.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resdata={restaurant} />
