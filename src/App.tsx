@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { Route } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./components/about";
+import Contact from "./components/Contact"; 
 
 const Applayout: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const Applayout: React.FC = () => {
 const appRoutes: any = createBrowserRouter([
   { path: "/", element: <Applayout /> },
   { path: "/about", element: <About /> },
-  { path: "/contact", element: <Applayout /> },
+  { path: "/contact", element: <Contact /> },
 ]);
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
