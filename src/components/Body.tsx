@@ -7,6 +7,7 @@ const Body: React.FC = () => {
   let [RestaurantList, setRestaurantList] = useState<any[]>([]);
   let [FilteredRestaurantList, setFilteredRestaurantList] = useState<any[]>([]);
   let [searchText, setSearchText] = useState("");
+  
   // let [RestaurantList,setRestaurantList]= arr;
   useEffect(() => {
     fetchData();
