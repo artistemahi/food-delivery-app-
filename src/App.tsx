@@ -7,6 +7,7 @@ import { Route } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./components/about";
 import Contact from "./components/Contact"; 
+import Error from "./components/Error";
 
 const Applayout: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const Applayout: React.FC = () => {
   );
 };
 const appRoutes: any = createBrowserRouter([
-  { path: "/", element: <Applayout /> },
+  { path: "/", element: <Applayout />, errorElement: <Error />},
   { path: "/about", element: <About /> },
   { path: "/contact", element: <Contact /> },
 ]);
