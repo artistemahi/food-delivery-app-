@@ -5,6 +5,8 @@ import Shimmer from "./Shimmer";
 
 const Body: React.FC = () => {
   let [RestaurantList, setRestaurantList] = useState<any[]>([]);
+  let [searchText, setSearchText] = useState("");
+  console.log("searchX");
   // let [RestaurantList,setRestaurantList]= arr;
   useEffect(() => {
     fetchData();
@@ -41,8 +43,10 @@ const Body: React.FC = () => {
         </div>
         <div className="searchbar">
           {" "}
-          <input type="text" name="searchinput" id="searchinput" />
-          <button className="searchbtn">search</button>
+          <input type="text" name="searchinput" id="searchinput" value={searchText} onChange={(e)=>{
+            setSearchText(e.target.value);
+          }} />
+          <button className="searchbtn" onClick={()=>{console.log("search")}}>search</button>
         </div>
       </div>
       <div className="restaurant-container">
