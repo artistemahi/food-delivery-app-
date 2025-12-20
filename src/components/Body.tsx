@@ -37,7 +37,7 @@ const Body: React.FC = () => {
             className="filterbtn"
             onClick={() => {
               const filteredList = RestaurantList.filter(
-                (res) => res.info.avgRating > 4.0
+                (res) => res.info.avgRating > 4.5
               );
               setRestaurantList(filteredList);
             }}
