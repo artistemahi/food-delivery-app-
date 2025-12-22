@@ -1,6 +1,6 @@
-const RestarurantMenu =()=>{
+const RestaurantMenu =()=>{
     return (
-        <div>
+        <div className="restaurant-menu">
             <h1>RestaurantName</h1>
             <p>Rating</p>
             <p>200 for two </p>
@@ -8,4 +8,4 @@ const RestarurantMenu =()=>{
         </div>
     )
 }
-export default RestarurantMenu;
+export default RestaurantMenu;
