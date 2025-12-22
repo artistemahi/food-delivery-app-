@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu"
 
+
 const Applayout: React.FC = () => {
   return (
     <div>
@@ -27,7 +28,7 @@ const appRoutes: any = createBrowserRouter([
       { path: "/", element: <Body /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
-      { path: "/restaurant-menu:", element: <RestaurantMenu /> },
+      { path: "/restaurants/:menuId", element: <RestaurantMenu /> },
     ],
   },
 ]);
