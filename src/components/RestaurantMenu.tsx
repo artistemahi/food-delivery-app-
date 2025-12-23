@@ -9,7 +9,7 @@ interface Menutype {
 };
 
 const RestaurantMenu: React.FC = ( ) => {
-  const [MenuData, setMenuData] = useState<any>(null);
+  const [MenuData, setMenuData] = useState<Menutype|null|any>(null);
   useEffect(() => {
     //fetch menu data from api
     fetchMenu();
@@ -27,7 +27,9 @@ const RestaurantMenu: React.FC = ( ) => {
 if (!MenuData) {
     return <Shimmer />;
   }
-  const info = MenuData.data.cards?.[2]?.card?.card?.info;
+  const info = MenuData?.data?.cards?.[2]?.card?.card?.info;
+  const item = MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1];
+  console.log(item);
 
   if (!info) return <div>Could not find restaurant menu info</div>;
 
