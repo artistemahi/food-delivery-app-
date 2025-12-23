@@ -39,14 +39,13 @@ const RestaurantMenu: React.FC = () => {
 
   if (!info) return <div>Could not find restaurant menu info</div>;
 
-  const { name, avgRating, costForTwoMessage, sla } = info;
-
+  const { name, avgRating, costForTwoMessage,sla } = info;
   return (
     <div className="restaurant-menu">
       <h1>{name}</h1>
       <p>{avgRating}</p>
       <p>{costForTwoMessage}</p>
-      <h2>{sla.deliveryTime} mins</h2>
+      {/* <h2>{sla.deliveryTime} mins</h2> */}
       <h3>Menu Items:</h3>
       <ul>
         {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (

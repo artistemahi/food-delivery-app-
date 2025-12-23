@@ -2,7 +2,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-
+import {Link} from "react-router";
 const Body: React.FC = () => {
   let [RestaurantList, setRestaurantList] = useState<any[]>([]);
   let [FilteredRestaurantList, setFilteredRestaurantList] = useState<any[]>([]);
@@ -68,7 +68,7 @@ const Body: React.FC = () => {
       </div>
       <div className="restaurant-container">
         {FilteredRestaurantList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resdata={restaurant} />
+        <Link key={restaurant.info.id}  to={"/restaurants/" + restaurant.info.id}  > <RestaurantCard resdata={restaurant} /> </Link>
         ))}
       </div>
     </div>
