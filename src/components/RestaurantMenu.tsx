@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Menu_API } from "../utils/constants";
+import { useParams } from "react-router";
 interface Menutype {
   name: string;
   avgRating: number;
@@ -10,6 +12,10 @@ interface Menutype {
 
 const RestaurantMenu: React.FC = () => {
   const [MenuData, setMenuData] = useState<Menutype | null | any>(null);
+  // const params = useParams();
+  // console.log(params);
+  const { menuId } = useParams();
+
   useEffect(() => {
     //fetch menu data from api
     fetchMenu();
@@ -17,7 +23,7 @@ const RestaurantMenu: React.FC = () => {
   const fetchMenu = async () => {
     //api call logic
     const data = await fetch(
-      "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6426028&lng=77.21921669999999&restaurantId=254131&submitAction=ENTER"
+     Menu_API + menuId
     );
     const json = await data.json();
     console.log(json);
