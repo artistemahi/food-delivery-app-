@@ -28,8 +28,8 @@ if (!MenuData) {
     return <Shimmer />;
   }
   const info = MenuData?.data?.cards?.[2]?.card?.card?.info;
-  const item = MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1];
-  console.log(item);
+  const item = MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
+  // console.log(item);
 
   if (!info) return <div>Could not find restaurant menu info</div>;
 
@@ -41,6 +41,10 @@ if (!MenuData) {
       <p>{avgRating}</p>
       <p>{costForTwoMessage}</p>
       <h2>{sla.deliveryTime} mins</h2>
+      <h3>Menu Items:</h3>
+      <ul>
+       {item.card?.card?.itemCards[0].card?.info?.name}
+      </ul>
     </div>
   );
 };
