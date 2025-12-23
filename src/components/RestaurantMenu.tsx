@@ -6,10 +6,10 @@ interface Menutype {
   costForTwoMessage: string;
   deliveryTime: number;
   sla: { deliveryTime: number };
-};
+}
 
-const RestaurantMenu: React.FC = ( ) => {
-  const [MenuData, setMenuData] = useState<Menutype|null|any>(null);
+const RestaurantMenu: React.FC = () => {
+  const [MenuData, setMenuData] = useState<Menutype | null | any>(null);
   useEffect(() => {
     //fetch menu data from api
     fetchMenu();
@@ -17,25 +17,25 @@ const RestaurantMenu: React.FC = ( ) => {
   const fetchMenu = async () => {
     //api call logic
     const data = await fetch(
-      "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6426028&lng=77.21921669999999&restaurantId=709678&submitAction=ENTER"
+      "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6426028&lng=77.21921669999999&restaurantId=254131&submitAction=ENTER"
     );
     const json = await data.json();
     console.log(json);
     setMenuData(json);
-    
   };
-if (!MenuData) {
+  if (!MenuData) {
     return <Shimmer />;
   }
   const info = MenuData?.data?.cards?.[2]?.card?.card?.info;
-  const item = MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
+  const item =
+    MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
   // console.log(item);
 
   if (!info) return <div>Could not find restaurant menu info</div>;
 
   const { name, avgRating, costForTwoMessage, sla } = info;
 
-  return(
+  return (
     <div className="restaurant-menu">
       <h1>{name}</h1>
       <p>{avgRating}</p>
@@ -43,7 +43,11 @@ if (!MenuData) {
       <h2>{sla.deliveryTime} mins</h2>
       <h3>Menu Items:</h3>
       <ul>
-       {item.card?.card?.itemCards[0].card?.info?.name}
+        {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
+          <li key={it.card?.info?.id}>
+            {it?.card?.info?.name} - {" "} {"₹"} {it?.card?.info?.defaultPrice / 100 || it?.card?.info?.price / 100} 
+          </li>
+        ))}
       </ul>
     </div>
   );
