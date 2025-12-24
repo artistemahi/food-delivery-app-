@@ -37,6 +37,25 @@
 .item {
   color: white;
 }
+.tagline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 82, 0);
+}
+.taglinetext-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tagline-text{
+  font-weight: 600px bold;
+  font-size: 48px;
+  line-height: 56px;
+  color: white;
+  padding: 20px;
+  letter-spacing: -0.3px;
+}
 .body {
   border: 2px solid rgb(0, 0, 17);
   height: 100%;
