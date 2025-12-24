@@ -2,12 +2,12 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import {Link} from "react-router";
+import { Link } from "react-router";
 const Body: React.FC = () => {
   let [RestaurantList, setRestaurantList] = useState<any[]>([]);
   let [FilteredRestaurantList, setFilteredRestaurantList] = useState<any[]>([]);
   let [searchText, setSearchText] = useState("");
-  
+
   // let [RestaurantList,setRestaurantList]= arr;
   useEffect(() => {
     fetchData();
@@ -37,7 +37,7 @@ const Body: React.FC = () => {
             className="filterbtn"
             onClick={() => {
               const filteredList = RestaurantList.filter(
-                (res) => res.info.avgRating > 4.5
+                (res) => res.info.avgRating > 4.7
               );
               setRestaurantList(filteredList);
             }}
@@ -56,19 +56,28 @@ const Body: React.FC = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="searchbtn" onClick={() => {
-            const filterList = RestaurantList.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
-            );
-            setFilteredRestaurantList(filterList);  
-          }}>
+          <button
+            className="searchbtn"
+            onClick={() => {
+              const filterList = RestaurantList.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurantList(filterList);
+            }}
+          >
             Search
           </button>
         </div>
       </div>
       <div className="restaurant-container">
         {FilteredRestaurantList.map((restaurant) => (
-        <Link key={restaurant.info.id}  to={"/restaurants/" + restaurant.info.id}  > <RestaurantCard resdata={restaurant} /> </Link>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            {" "}
+            <RestaurantCard resdata={restaurant} />{" "}
+          </Link>
         ))}
       </div>
     </div>
