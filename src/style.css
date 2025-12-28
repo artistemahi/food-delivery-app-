@@ -109,9 +109,7 @@
   width: 100%;
   margin-top: 5px;
 }
-.footer {
-  border: 2px solid rgb(0, 0, 17);
-}
+
 .restaurant-card {
   background-color: #f0f0f0;
   width: 400px;
@@ -201,4 +199,17 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+.footer {
+ background-color: rgb(200, 200, 205);
+ padding: 30px;
+}
+.footer_container{
+  display:flex;
+  justify-content:space-evenly;
+}
+.footer_logo{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
