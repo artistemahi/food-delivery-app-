@@ -37,9 +37,9 @@ const Body: React.FC = () => {
             className="filterbtn"
             onClick={() => {
               const filteredList = RestaurantList.filter(
-                (res) => res.info.avgRating > 4.7
+                (res) => res.info.avgRating > 4.5
               );
-              setRestaurantList(filteredList);
+              setFilteredRestaurantList(filteredList);
             }}
           >
             Top Rated Restaurant
