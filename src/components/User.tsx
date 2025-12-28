@@ -1,24 +1,16 @@
-import React from 'react';
-
-interface UserProps {
-    name: string;
+interface propsType {
+    name:string;
     age: string;
-    location: string;
-}
-
-class User extends React.Component<UserProps> {
-    constructor(props: UserProps) {
-        super(props);
-    }
-    render() {
-        return (  
-            <div className="user-card" >
-                <h1>User Component</h1>
-                <h2>Name: {this.props.name}</h2>
-                <h3>Age: {this.props.age}</h3>
-                <h3>Location: India </h3>
-            </div>
-        );
-    }
+    location:string;
+};
+const User :React.FC<propsType>= (props:propsType) =>{
+ return( <>
+ <div className="user-card">
+    <h1>Function based component</h1>
+    <h2>Name: {props.name}</h2>
+    <h2>Age: {props.age}</h2>
+    <h2>Location: {props.location}</h2>
+ </div>
+ </>);
 };
 export default User;

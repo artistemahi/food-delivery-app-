@@ -1,4 +1,5 @@
 import { logo_Url } from "./../utils/constants";
+import {vegetable} from "./../utils/constants"
 import { useState } from "react";
 import { Link } from "react-router";
 const Header: React.FC = () => {
@@ -32,15 +33,22 @@ const Header: React.FC = () => {
           </button>
         </div>
       </div>
-      <div className="tagline-container">
-       <div className="taglinetext-container">
-          <div className="tagline-text">
-            Order food & groceries. Discover best restaurants. Swiggy it!
-          </div>
-        </div>
-        <div><input type="text" placeholder="Enter your delivery location" className="searchbar"/></div>
-        <div><input type="text" placeholder="Search for the restaurant, item or more" className="searchbar"/></div>
+    <div className="tagline-container">
+      <div>
+          <img className="vegetable_bg" src= {vegetable} alt="vegetable_bg"/>
+          <img></img>
       </div>
+    <div className="tagline-text">
+        Order food & groceries. Discover best restaurants. Swiggy it!
+    </div>
+
+    <div className="input-container">
+        <input type="text" placeholder="Enter your delivery location" className="searchbar1" />
+        <input type="text" placeholder="Search for the restaurant, item or more" className="searchbar2" />
+        
+    </div>
+</div>
+
     </>
   );
 };
