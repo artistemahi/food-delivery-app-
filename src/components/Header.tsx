@@ -1,5 +1,6 @@
 import { logo_Url } from "./../utils/constants";
-import {vegetable} from "./../utils/constants"
+import {vegetable_right} from "./../utils/constants"
+import {vegetable_left} from "./../utils/constants"
 import { useState } from "react";
 import { Link } from "react-router";
 const Header: React.FC = () => {
@@ -34,12 +35,12 @@ const Header: React.FC = () => {
         </div>
       </div>
     <div className="tagline-container">
-      <div>
-          <img className="vegetable_bg" src= {vegetable} alt="vegetable_bg"/>
-          <img></img>
+      <div className="vegetable_bg_container">
+          <img className="vegetable_bg_right" src= {vegetable_right} alt="vegetable_bg"/>
+          <img className="vegetable_bg_left" src={vegetable_left}  alt="vegetable_bg"/>
       </div>
     <div className="tagline-text">
-        Order food & groceries. Discover best restaurants. Swiggy it!
+        Order food & groceries.<br></br> Discover best restaurants. Swiggy it!
     </div>
 
     <div className="input-container">
