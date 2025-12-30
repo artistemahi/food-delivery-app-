@@ -7,7 +7,7 @@ class About extends Component<AboutProps>{
     super(props);
     console.log("parent constructor");
   }
-  componentDidMount(){
+  async componentDidMount(){
     console.log("parent componentDidMount");
   }
   render(){  
@@ -17,7 +17,7 @@ class About extends Component<AboutProps>{
       <>
         <h1>About Us Page</h1>
         <UserClass  order ="First" name = "John Doe" age = "30" location = "New York"/>
-        <UserClass  order ="Second" name = "Jane Smith" age = "25" location = "Los Angeles"/>
+        {/* <UserClass  order ="Second" name = "Jane Smith" age = "25" location = "Los Angeles"/> */}
       </>
     );
   
