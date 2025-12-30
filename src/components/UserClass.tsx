@@ -16,17 +16,25 @@ class UserClass extends React.Component<UserProps, StateType> {
     this.state = {
       count1: 0,
     };
+    console.log("child constructor");
+  }
+  componentDidMount(){
+    console.log("child componentDidMount");
   }
   render() {
-
+    console.log("child render");
     const { count1 } = this.state;
     return (
       <div className="user-card">
-
         <h1>count : {count1}</h1>
-        <button onClick ={()=>{this.setState(
-            {count1: count1+1}
-        )}} > count increase </button>
+        <button
+          onClick={() => {
+            this.setState({ count1: count1 + 1 });
+          }}
+        >
+          {" "}
+          count increase{" "}
+        </button>
         <h1>Classed based Component</h1>
         <h2>Name: {this.props.name}</h2>
         <h3>Age: {this.props.age}</h3>
