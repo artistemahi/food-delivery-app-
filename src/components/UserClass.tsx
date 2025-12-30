@@ -4,6 +4,7 @@ interface UserProps {
   name: string;
   age: string;
   location: string;
+  order: string;
 }
 
 interface StateType {
@@ -16,13 +17,14 @@ class UserClass extends React.Component<UserProps, StateType> {
     this.state = {
       count1: 0,
     };
-    console.log("child constructor");
+    console.log(this.props.order + " child constructor");
   }
   componentDidMount(){
-    console.log("child componentDidMount");
+    console.log(this.props.order +"child componentDidMount");
   }
   render() {
-    console.log("child render");
+    console.log(this.props.order +"child render");
+
     const { count1 } = this.state;
     return (
       <div className="user-card">

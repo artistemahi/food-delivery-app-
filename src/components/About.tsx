@@ -10,14 +10,17 @@ class About extends Component<AboutProps>{
   componentDidMount(){
     console.log("parent componentDidMount");
   }
-  render(){
+  render(){  
     console.log("parent render");
+
     return (
       <>
         <h1>About Us Page</h1>
-        <UserClass name = "John Doe" age = "30" location = "New York"/>
+        <UserClass  order ="First" name = "John Doe" age = "30" location = "New York"/>
+        <UserClass  order ="Second" name = "Jane Smith" age = "25" location = "Los Angeles"/>
       </>
     );
+  
   }
 }
 export default About;
