@@ -33,6 +33,9 @@ class UserClass extends React.Component<UserProps, StateType> {
       userInfo:json
     })
   }
+  componentWillUnmount(){
+    console.log("this is  componentWillUnmount method");
+  }
   render() {
     const {name,public_repos,avatar_url} = this.state.userInfo;
     console.log(this.props.order +"child render");
