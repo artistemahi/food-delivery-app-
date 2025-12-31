@@ -8,8 +8,10 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu"
+import Grocery from "./components/Grocery";
+import {Suspense,lazy} from "react";
 
-
+const LazyGrocery = lazy(()=> import ("./components/Grocery"));
 const Applayout: React.FC = () => {
   return (
     <div>
@@ -29,6 +31,8 @@ const appRoutes: any = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/restaurants/:menuId", element: <RestaurantMenu /> },
+      { path: "/grocery", element: <Suspense ><LazyGrocery /></Suspense>},
+
     ],
   },
 ]);

@@ -26,6 +26,9 @@ const Header: React.FC = () => {
             <Link to="/contact">Contact</Link>
           </ul>
           <ul className="item">cart</ul>
+          <ul className="item">
+            <Link to="/grocery">Grocery</Link>
+          </ul>
           <button
             className="login"
             onClick={() => {
