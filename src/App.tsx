@@ -31,7 +31,7 @@ const appRoutes: any = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/restaurants/:menuId", element: <RestaurantMenu /> },
-      { path: "/grocery", element: <Suspense ><LazyGrocery /></Suspense>},
+      { path: "/grocery", element: <Suspense fallback={<div>Loading...</div>}><LazyGrocery /></Suspense>},
 
     ],
   },
