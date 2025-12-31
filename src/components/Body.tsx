@@ -33,6 +33,8 @@ const Body: React.FC = () => {
       return (
         <div className="offline-status">
           <h1>You are offline. Please check your internet connection.</h1>
+          <h1>😔</h1>
+          <h1>Game</h1>
         </div>
       );
     }
