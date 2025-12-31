@@ -1,10 +1,13 @@
 import { logo_Url } from "./../utils/constants";
-import {vegetable_right} from "./../utils/constants"
-import {vegetable_left} from "./../utils/constants"
+import { vegetable_right } from "./../utils/constants";
+import { vegetable_left } from "./../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Header: React.FC = () => {
   const [loginBtn, setloginBtn] = useState("Login");
+  const isOnline = useOnlineStatus();
+
   return (
     <>
       <div className="header">
@@ -14,6 +17,7 @@ const Header: React.FC = () => {
           </Link>
         </div>
         <div className="nav">
+          <ul className="item">Online Status: {isOnline ? "✅" : "🔴"}</ul>
           <ul className="item">Swiggy Corporate</ul>
           <ul className="item">
             <Link to="/about">About us</Link>
@@ -34,22 +38,36 @@ const Header: React.FC = () => {
           </button>
         </div>
       </div>
-    <div className="tagline-container">
-      <div className="vegetable_bg_container">
-          <img className="vegetable_bg_right" src= {vegetable_right} alt="vegetable_bg"/>
-          <img className="vegetable_bg_left" src={vegetable_left}  alt="vegetable_bg"/>
+      <div className="tagline-container">
+        <div className="vegetable_bg_container">
+          <img
+            className="vegetable_bg_right"
+            src={vegetable_right}
+            alt="vegetable_bg"
+          />
+          <img
+            className="vegetable_bg_left"
+            src={vegetable_left}
+            alt="vegetable_bg"
+          />
+        </div>
+        <div className="tagline-text">
+          Order food & groceries.<br></br> Discover best restaurants. Swiggy it!
+        </div>
+
+        <div className="input-container">
+          <input
+            type="text"
+            placeholder="Enter your delivery location"
+            className="searchbar1"
+          />
+          <input
+            type="text"
+            placeholder="Search for the restaurant, item or more"
+            className="searchbar2"
+          />
+        </div>
       </div>
-    <div className="tagline-text">
-        Order food & groceries.<br></br> Discover best restaurants. Swiggy it!
-    </div>
-
-    <div className="input-container">
-        <input type="text" placeholder="Enter your delivery location" className="searchbar1" />
-        <input type="text" placeholder="Search for the restaurant, item or more" className="searchbar2" />
-        
-    </div>
-</div>
-
     </>
   );
 };
