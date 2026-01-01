@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { Menu_API } from "../utils/constants";
-import { useParams } from "react-router";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu: React.FC = () => {
@@ -13,7 +11,7 @@ const RestaurantMenu: React.FC = () => {
   const info = MenuData?.data?.cards?.[2]?.card?.card?.info;
   const item =
     MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
-  // console.log(item);
+  console.log(item);
 
   if (!info) return <div>Could not find restaurant menu info</div>;
 

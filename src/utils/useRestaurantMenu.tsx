@@ -10,16 +10,18 @@ interface Menutype {
   data: any;
 }
 const useRestaurantMenu = () => {
-  const [MenuData, setMenuData] = useState<Menutype | null>(null);
-  const { MenuId } = useParams();
+  const [MenuData, setMenuData] = useState<Menutype>();
+  const { menuId } = useParams();
+  // console.log(menuId);
   // Hook implementation goes here
   useEffect(() => {
     fetchMenu();
   }, []);
   const fetchMenu = async () => {
-    const data = await fetch(Menu_API + MenuId);
+    const data = await fetch(Menu_API + menuId);
     const json = await data.json();
     setMenuData(json);
+    console.log(MenuData);
   };
 
   return MenuData;
