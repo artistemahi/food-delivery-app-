@@ -62,12 +62,12 @@ const Header: React.FC = () => {
           <input
             type="text"
             placeholder="Enter your delivery location"
-            className="searchbar1"
+            className= "bg-amber-50 searchbar1"
           />
           <input
             type="text"
             placeholder="Search for the restaurant, item or more"
-            className="searchbar2"
+            className="bg-amber-50 searchbar2"
           />
         </div>
       </div>
