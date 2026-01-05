@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { dropdown_symbol } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
@@ -17,21 +18,29 @@ const RestaurantMenu: React.FC = () => {
 
   const { name, avgRating, costForTwoMessage, sla } = info;
   return (
-    <div className="restaurant-menu">
-      <h1>{name}</h1>
-      <p>{avgRating}</p>
-      <p>{costForTwoMessage}</p>
-      {/* <h2>{sla.deliveryTime} mins</h2> */}
-      <h3>Menu Items:</h3>
-      <ul>
-        {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
-          <li key={it.card?.info?.id}>
-            {it?.card?.info?.name} - {"₹"}{" "}
-            {it?.card?.info?.defaultPrice / 100 || it?.card?.info?.price / 100}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className=" flex items-center justify-center flex-col">
+        <h1 className="text-2xl font-bold">{name}</h1>
+        <p className="bg-green-500 text-white px-4 py-1 rounded">{avgRating}</p>
+        <p>{costForTwoMessage}</p>
+      </div>
+      <div className="text-center ">
+        <h3>Menu Items:</h3>
+        <div className=" bg-gray-50 w-full shadow-lg p-4 flex justify-between">
+          <p className="p-4">Recommended</p>
+          <img className="h-5 w-5" src={dropdown_symbol}></img>
+        </div>
+        <ul>
+          {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
+            <li key={it.card?.info?.id}>
+              {it?.card?.info?.name} - {"₹"}{" "}
+              {it?.card?.info?.defaultPrice / 100 ||
+                it?.card?.info?.price / 100}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 export default RestaurantMenu;
