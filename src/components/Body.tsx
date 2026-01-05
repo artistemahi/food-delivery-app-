@@ -1,5 +1,5 @@
 // import reslist from "./../utils/mockdata";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
@@ -8,7 +8,7 @@ const Body: React.FC = () => {
   let [RestaurantList, setRestaurantList] = useState<any[]>([]);
   let [FilteredRestaurantList, setFilteredRestaurantList] = useState<any[]>([]);
   let [searchText, setSearchText] = useState("");
-
+  const RestaurantCardWithPromotedLabel = withPromotedLabel(RestaurantCard); // restaurant card wrapped with HOC
   // let [RestaurantList,setRestaurantList]= arr;
   useEffect(() => {
     fetchData();
@@ -18,7 +18,7 @@ const Body: React.FC = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.594566&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    // console.log( json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    console.log( json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     // optional chaining
     setRestaurantList(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -29,15 +29,15 @@ const Body: React.FC = () => {
   };
 
   const isOnline = useOnlineStatus();
-    if (!isOnline) {
-      return (
-        <div className="offline-status">
-          <h1>You are offline. Please check your internet connection.</h1>
-          <h1>😔</h1>
-          <h1>Game</h1>
-        </div>
-      );
-    }
+  if (!isOnline) {
+    return (
+      <div className="offline-status">
+        <h1>You are offline. Please check your internet connection.</h1>
+        <h1>😔</h1>
+        <h1>Game</h1>
+      </div>
+    );
+  }
   if (RestaurantList.length === 0) {
     return <Shimmer />;
   }
@@ -49,7 +49,7 @@ const Body: React.FC = () => {
             className="filterbtn"
             onClick={() => {
               const filteredList = RestaurantList.filter(
-                (res) => res.info.avgRating > 4.0
+                (res) => res.info.avgRating > 4.2
               );
               setFilteredRestaurantList(filteredList);
             }}
@@ -87,8 +87,11 @@ const Body: React.FC = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            {" "}
-            <RestaurantCard resdata={restaurant} />{" "}
+            {restaurant.info.isOpen ? (
+              <RestaurantCardWithPromotedLabel resdata={restaurant} />
+            ) : (
+              <RestaurantCard resdata={restaurant} />
+            )}
           </Link>
         ))}
       </div>

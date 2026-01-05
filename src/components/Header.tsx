@@ -3,11 +3,11 @@ import { vegetable_right } from "./../utils/constants";
 import { vegetable_left } from "./../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router";
+ import {LOCATION_ICON} from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 const Header: React.FC = () => {
   const [loginBtn, setloginBtn] = useState("Login");
   const isOnline = useOnlineStatus();
-
   return (
     <>
       <div className="header">
@@ -59,10 +59,11 @@ const Header: React.FC = () => {
         </div>
 
         <div className="input-container">
+          <img className="w-6 h-6" src={LOCATION_ICON} alt="Location pin icon"/>
           <input
             type="text"
-            placeholder="Enter your delivery location"
-            className= "bg-amber-50 searchbar1"
+            placeholder= " Enter your delivery location"
+            className="bg-amber-50  searchbar1"
           />
           <input
             type="text"

@@ -6,7 +6,9 @@ type Info = {
   avgRating: number;
   deliveryTime: number;
   cloudinaryImageId: string;
-  sla: { deliveryTime: number}
+  sla: { deliveryTime: number};
+  promoted: boolean;
+  id: string;
 };
 type ResProps = {
   resdata: {
@@ -38,3 +40,14 @@ const RestaurantCard: React.FC<ResProps> = (Props) => {
   );
 };
 export default RestaurantCard;
+// higher order component - a component that wraps another component
+ export const withPromotedLabel = (RestaurantCard: React.FC<ResProps>) => {
+  return (props:ResProps) =>{
+    return (
+      <div>
+        <div className="absolute bg-black text-white m-2 p-2 rounded-b-lg">Promoted</div>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  } 
+} ;
