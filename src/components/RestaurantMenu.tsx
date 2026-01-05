@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { dropdown_symbol } from "../utils/constants";
+import { dropdown_symbol, BaseURL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
@@ -13,7 +13,8 @@ const RestaurantMenu: React.FC = () => {
   const item =
     MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
   console.log(item);
-
+  const itemList= MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+  console.log(itemList);
   if (!info) return <div>Could not find restaurant menu info</div>;
 
   const { name, avgRating, costForTwoMessage, sla } = info;
@@ -26,19 +27,25 @@ const RestaurantMenu: React.FC = () => {
       </div>
       <div className="text-center ">
         <h3>Menu Items:</h3>
-        <div className=" bg-gray-50 w-full shadow-lg p-4 flex justify-between">
-          <p>Recommended </p>
+        <div className=" bg-gray-50 w-full shadow-lg p-4  ">
+          <div className="flex justify-between">
+          <p>{item?.card?.card?.title} ({itemList.length}) </p>
           <span>🔻</span>
+          </div>
+          <ul>
+            {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
+              <li key={it.card?.info?.id}>
+                {it?.card?.info?.name} - {"₹"}{" "}
+                {it?.card?.info?.defaultPrice / 100 ||
+                  it?.card?.info?.price / 100}
+                <img
+                  className="h-10 w-10"
+                  src={BaseURL + it?.card?.info?.imageId}
+                ></img>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul>
-          {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
-            <li key={it.card?.info?.id}>
-              {it?.card?.info?.name} - {"₹"}{" "}
-              {it?.card?.info?.defaultPrice / 100 ||
-                it?.card?.info?.price / 100}
-            </li>
-          ))}
-        </ul>
       </div>
     </>
   );
