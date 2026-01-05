@@ -27,8 +27,8 @@ const RestaurantMenu: React.FC = () => {
       <div className="text-center ">
         <h3>Menu Items:</h3>
         <div className=" bg-gray-50 w-full shadow-lg p-4 flex justify-between">
-          <p className="p-4">Recommended</p>
-          <img className="h-5 w-5" src={dropdown_symbol}></img>
+          <p>Recommended </p>
+          <span>🔻</span>
         </div>
         <ul>
           {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
