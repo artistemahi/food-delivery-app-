@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { dropdown_symbol, BaseURL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import ItemList from "./ItemList";
 
 const RestaurantMenu: React.FC = () => {
   const MenuData = useRestaurantMenu();
@@ -28,10 +29,7 @@ const RestaurantMenu: React.FC = () => {
       <div className="text-center ">
         <h3>Menu Items:</h3>
         <div className=" bg-gray-50 w-full shadow-lg p-4  ">
-          <div className="flex justify-between">
-          <p>{item?.card?.card?.title} ({itemList.length}) </p>
-          <span>🔻</span>
-          </div>
+          <ItemList />
           <ul>
             {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
               <li key={it.card?.info?.id}>
