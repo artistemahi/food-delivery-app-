@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import { dropdown_symbol, BaseURL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ItemList from "./ItemList";
+import { useState } from "react";
 
 const RestaurantMenu: React.FC = () => {
   const MenuData = useRestaurantMenu();
-
+  const [showIndex, setShowIndex] = useState<number | undefined>();
   if (!MenuData) {
     return <Shimmer />;
   }
@@ -14,9 +13,17 @@ const RestaurantMenu: React.FC = () => {
   const item =
     MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
   console.log(item);
-  const itemList= MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-  console.log(itemList);
   if (!info) return <div>Could not find restaurant menu info</div>;
+
+  const itemList =
+    MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  console.log(itemList);
+  const categories = itemList?.filter(
+    (c: any) =>
+      c.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+  console.log(categories);
 
   const { name, avgRating, costForTwoMessage, sla } = info;
   return (
@@ -28,22 +35,15 @@ const RestaurantMenu: React.FC = () => {
       </div>
       <div className="text-center ">
         <h3>Menu Items:</h3>
-        <div className=" bg-gray-50 w-full shadow-lg p-4  ">
-          <ItemList />
-          <ul>
-            {(item?.card?.card?.itemCards ?? []).map((it: any, idx: number) => (
-              <li key={it.card?.info?.id}>
-                {it?.card?.info?.name} - {"₹"}{" "}
-                {it?.card?.info?.defaultPrice / 100 ||
-                  it?.card?.info?.price / 100}
-                <img
-                  className="h-10 w-10"
-                  src={BaseURL + it?.card?.info?.imageId}
-                ></img>
-              </li>
-            ))}
-          </ul>
-        </div>
+
+        {categories.map((category: any, index: number) => (
+          <ItemList
+            key={category?.card?.card?.title.length}
+            data={category?.card?.card}
+            showItems={index === showIndex ? true: false}
+            setShowIndex={() => setShowIndex(index)}
+          />
+        ))}
       </div>
     </>
   );
