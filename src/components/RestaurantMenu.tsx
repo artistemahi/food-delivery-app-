@@ -10,20 +10,17 @@ const RestaurantMenu: React.FC = () => {
     return <Shimmer />;
   }
   const info = MenuData?.data?.cards?.[2]?.card?.card?.info;
-  const item =
-    MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2];
-  console.log(item);
   if (!info) return <div>Could not find restaurant menu info</div>;
-
+  console.log(info); // restaurant info
   const itemList =
     MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  console.log(itemList);
+  console.log(itemList);   // full item list
   const categories = itemList?.filter(
     (c: any) =>
       c.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
-  console.log(categories);
+  console.log(categories); // only categories
 
   const { name, avgRating, costForTwoMessage, sla } = info;
   return (
@@ -38,9 +35,9 @@ const RestaurantMenu: React.FC = () => {
 
         {categories.map((category: any, index: number) => (
           <ItemList
-            key={category?.card?.card?.title.length}
+            key={category?.card?.card?.parentId}
             data={category?.card?.card}
-            showItems={index === showIndex ? true: false}
+            showItems={index === showIndex ? true : false}
             setShowIndex={() => setShowIndex(index)}
           />
         ))}

@@ -1,13 +1,15 @@
 import { logo_Url } from "./../utils/constants";
 import { vegetable_right } from "./../utils/constants";
 import { vegetable_left } from "./../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router";
  import {LOCATION_ICON} from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Header: React.FC = () => {
   const [loginBtn, setloginBtn] = useState("Login");
   const isOnline = useOnlineStatus();
+  const {loggedInUser} = useContext(UserContext);
   return (
     <>
       <div className="header">
@@ -29,6 +31,7 @@ const Header: React.FC = () => {
           <ul className="item">
             <Link to="/grocery">Grocery</Link>
           </ul>
+          <ul className="font-bold text-black">User: {loggedInUser}</ul>
           <button
             className="login"
             onClick={() => {

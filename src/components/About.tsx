@@ -1,12 +1,15 @@
 import UserClass from "./UserClass";
 import User from "./User";
 import {Component} from "react";
+import {useContext} from "react";
+import UserContext from "../utils/UserContext";
 interface AboutProps{}
 class About extends Component<AboutProps>{
   constructor(props: AboutProps){
     super(props);
     console.log("parent constructor");
   }
+  
   async componentDidMount(){
     console.log("parent componentDidMount");
   }
