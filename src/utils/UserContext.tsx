@@ -1,7 +1,8 @@
 import {createContext} from 'react';
 
 interface User {
-    loggedInUser: string;
+    setUserName?: (name: string) => void;
+    loggedInUser: any;
 }
 const UserContext = createContext<User>({
     loggedInUser: 'Guest User'

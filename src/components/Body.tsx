@@ -1,9 +1,10 @@
 // import reslist from "./../utils/mockdata";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body: React.FC = () => {
   let [RestaurantList, setRestaurantList] = useState<any[]>([]);
@@ -11,7 +12,8 @@ const Body: React.FC = () => {
   let [searchText, setSearchText] = useState("");
   const RestaurantCardWithPromotedLabel = withPromotedLabel(RestaurantCard); // restaurant card wrapped with HOC
   // let [RestaurantList,setRestaurantList]= arr;
-  
+  const { loggedInUser,setUserName } = useContext(UserContext);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -29,7 +31,6 @@ const Body: React.FC = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-   
 
   const isOnline = useOnlineStatus();
   if (!isOnline) {
@@ -60,8 +61,16 @@ const Body: React.FC = () => {
             Top Rated Restaurant
           </button>
         </div>
+        <div className="flex items-center">
+          <input
+            className="border-black "
+            type="text"
+            value={loggedInUser}
+            onChange={(e) => setUserName?.(e.target.value)}
+            placeholder="Tell me Who Are U ?"
+          />
+        </div>
         <div className="searchbar">
-          {" "}
           <input
             type="text"
             name="searchinput"
