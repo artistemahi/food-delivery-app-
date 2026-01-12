@@ -76,8 +76,4 @@ const ItemListData: React.FC<{ data: Item[] }> = ({ data }) => {
     </div>
   );
 };
-
 export default ItemListData;
-function dispatch(arg0: { payload: any; type: "cart/addItem" }) {
-  throw new Error("Function not implemented.");
-}
