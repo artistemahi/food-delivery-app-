@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    items: [] as any[],
+    items: ["pizza", "burger"] as any[],
   },
   reducers: {
     addItem: (state, action: PayloadAction<any>) => {

@@ -6,10 +6,19 @@ import { Link } from "react-router";
  import {LOCATION_ICON} from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import {useSelector} from "react-redux";
+
 const Header: React.FC = () => {
   const [loginBtn, setloginBtn] = useState("Login");
   const isOnline = useOnlineStatus();
   const {loggedInUser} = useContext(UserContext);
+
+
+  // subscribing to the store 
+  const cartItems= useSelector((store:any)=>
+    store.cart.items
+  )
+  console.log(cartItems);
   return (
     <>
       <div className="header">
@@ -27,7 +36,7 @@ const Header: React.FC = () => {
           <ul className="item">
             <Link to="/contact">Contact</Link>
           </ul>
-          <ul className="item">cart</ul>
+          <ul className="cart">🛒({cartItems.length})</ul>
           <ul className="item">
             <Link to="/grocery">Grocery</Link>
           </ul>

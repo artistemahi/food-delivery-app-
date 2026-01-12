@@ -7,20 +7,18 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import RestaurantMenu from "./components/RestaurantMenu"
-import {Suspense,lazy} from "react";
+import RestaurantMenu from "./components/RestaurantMenu";
+import { Suspense, lazy } from "react";
 import UserContext from "./utils/UserContext";
 import User from "./components/User";
 import { useState } from "react";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
-
-const LazyGrocery = lazy(()=> import ("./components/Grocery"));
-
-
+const LazyGrocery = lazy(() => import("./components/Grocery"));
 
 const Applayout: React.FC = () => {
-
-  const [userName,setUserName] = useState<string>();
+  const [userName, setUserName] = useState<string>();
   //authentication
   useEffect(() => {
     //API call to check if user is logged in
@@ -28,15 +26,17 @@ const Applayout: React.FC = () => {
     setUserName(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{loggedInUser: userName , setUserName}} >
-    <div> 
-      <UserContext.Provider value={{loggedInUser: "Keshav"}} >
-      <Header></Header>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div>
+          <UserContext.Provider value={{ loggedInUser: "Keshav" }}>
+            <Header></Header>
+          </UserContext.Provider>
+          <Outlet />
+          <Footer />
+        </div>
       </UserContext.Provider>
-      <Outlet />
-      <Footer />
-    </div>
-      </UserContext.Provider>
+    </Provider>
   );
 };
 const appRoutes: any = createBrowserRouter([
@@ -49,8 +49,14 @@ const appRoutes: any = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/restaurants/:menuId", element: <RestaurantMenu /> },
-      { path: "/grocery", element: <Suspense fallback={<div>Loading...</div>}><LazyGrocery /></Suspense>},
-
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyGrocery />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);
