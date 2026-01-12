@@ -36,7 +36,7 @@ const Header: React.FC = () => {
           <ul className="item">
             <Link to="/contact">Contact</Link>
           </ul>
-          <ul className="cart">🛒({cartItems.length})</ul>
+          <ul className="cart"><Link to= "/cart">🛒({cartItems.length})</Link></ul>
           <ul className="item">
             <Link to="/grocery">Grocery</Link>
           </ul>

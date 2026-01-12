@@ -1,6 +1,7 @@
 import React from "react";
 import { BaseURL } from "../utils/constants";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/slices/cartSlice";
 interface ItemInfo {
   id: string;
   name: string;
@@ -17,21 +18,27 @@ interface Item {
 }
 
 const ItemListData: React.FC<{ data: Item[] }> = ({ data }) => {
+  // always use the hooks inside the component
+    const dispatch = useDispatch();
+  
+  const handleAddItem = (item:any) => {
+    //Dispatch an action
+    dispatch(addItem(item));
+  };
+
   return (
     <div className="space-y-4">
       {data.map((item) => {
         const info = item.card?.info;
         if (!info) return null;
 
-        const price =
-          (info.price ?? info.defaultPrice ?? 0) / 100;
+        const price = (info.price ?? info.defaultPrice ?? 0) / 100;
 
         return (
           <div
             key={info.id}
             className="flex justify-between items-start p-4 border-b relative"
           >
-           
             <div className="w-11/12">
               <h3 className="font-semibold text-lg">{info.name}</h3>
 
@@ -40,13 +47,10 @@ const ItemListData: React.FC<{ data: Item[] }> = ({ data }) => {
               </p>
 
               {info.description && (
-                <p className="text-sm text-gray-500 mt-2">
-                  {info.description}
-                </p>
+                <p className="text-sm text-gray-500 mt-2">{info.description}</p>
               )}
             </div>
 
-          
             <div className="w-1/12 flex flex-col items-center">
               {info.imageId && (
                 <img
@@ -58,6 +62,7 @@ const ItemListData: React.FC<{ data: Item[] }> = ({ data }) => {
 
               {/* Add Button */}
               <button
+                onClick={()=>handleAddItem(item)}
                 className="mt-2 bg-black text-white w-15  rounded-md 
                            text-sm font-semibold hover:bg-green-600 hover:cursor-grab
                             transition absolute "
@@ -73,3 +78,6 @@ const ItemListData: React.FC<{ data: Item[] }> = ({ data }) => {
 };
 
 export default ItemListData;
+function dispatch(arg0: { payload: any; type: "cart/addItem" }) {
+  throw new Error("Function not implemented.");
+}
