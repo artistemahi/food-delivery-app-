@@ -11,16 +11,16 @@ const RestaurantMenu: React.FC = () => {
   }
   const info = MenuData?.data?.cards?.[2]?.card?.card?.info;
   if (!info) return <div>Could not find restaurant menu info</div>;
-  console.log(info); // restaurant info
+  // console.log(info); // restaurant info
   const itemList =
     MenuData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  console.log(itemList);   // full item list
+  // console.log(itemList);   // full item list
   const categories = itemList?.filter(
     (c: any) =>
       c.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
-  console.log(categories); // only categories
+  // console.log(categories); // only categories
 
   const { name, avgRating, costForTwoMessage, sla } = info;
   return (

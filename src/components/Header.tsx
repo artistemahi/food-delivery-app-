@@ -17,7 +17,7 @@ const Header: React.FC = () => {
   const cartItems= useSelector((store:any)=>
     store.cart.items
   )
-  console.log(cartItems);
+  // console.log(cartItems);
   return (
     <>
       <div className="header">
