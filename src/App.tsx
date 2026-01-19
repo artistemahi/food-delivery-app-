@@ -26,21 +26,18 @@ const Applayout: React.FC = () => {
   const hideLayoutRoutes = ["/about", "/contact", "/grocery"];
   const hideLayout = hideLayoutRoutes.includes(location.pathname);
 
+  const [userName, setUserName] = useState<string>("Guest");
 
-  const [userName, setUserName] = useState<string>();
-  //authentication
   useEffect(() => {
-    //API call to check if user is logged in
-    const data = { name: "Mahesh kumar" };
+    const data = { name: "" };
     setUserName(data.name);
   }, []);
+
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div>
-          <UserContext.Provider value={{ loggedInUser: "Keshav" }}>
-            {!hideLayout  && <Header />}
-          </UserContext.Provider>
+          {!hideLayout && <Header />}
           <Outlet />
           {!hideLayout && <Footer />}
         </div>
@@ -48,6 +45,7 @@ const Applayout: React.FC = () => {
     </Provider>
   );
 };
+
 const appRoutes: any = createBrowserRouter([
   {
     path: "/",
