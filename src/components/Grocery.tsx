@@ -1,7 +1,8 @@
+import LoadingPage from "../utils/LoadingPage";
 const Grocery =()=>{
     return (
         <div>
-            <h1>Grocery Page</h1>
+           <LoadingPage></LoadingPage>
         </div>
     )
 };

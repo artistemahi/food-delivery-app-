@@ -1,4 +1,8 @@
+import LoadingPage from "../utils/LoadingPage";
 const contactus = () => {
-  return <h1>Contact Us Page</h1>;
+  return(
+  <>
+   <LoadingPage></LoadingPage>
+  </>)
 };
 export default contactus;
