@@ -35,7 +35,7 @@ const RestaurantMenu: React.FC = () => {
 
         {categories.map((category: any, index: number) => (
           <ItemList
-            key={category?.card?.card?.parentId}
+            key={category?.card?.card?.categoryId}
             data={category?.card?.card}
             showItems={index === showIndex ? true : false}
             setShowIndex={() => setShowIndex(index)}
