@@ -1,9 +1,8 @@
-import {logo_Url} from "./../utils/constants"
 const Footer: React.FC = () => {
   return (
     <div className="footer">
       <div className="footer_container">
-      <img   className ="footer_logo" src={logo_Url}></img>
+      <p className="text-8xl text-orange-500">Swiggy</p>
       <div className="copyright-info">Company</div>
       <div className="links">Contact us</div>
       <div className="address">Available in:</div>

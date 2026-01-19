@@ -15,10 +15,18 @@ import { useState } from "react";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart"
+import { useLocation } from "react-router";
+
+
 
 const LazyGrocery = lazy(() => import("./components/Grocery"));
 
 const Applayout: React.FC = () => {
+  const location = useLocation();
+  const hideLayoutRoutes = ["/about", "/contact", "/grocery"];
+  const hideLayout = hideLayoutRoutes.includes(location.pathname);
+
+
   const [userName, setUserName] = useState<string>();
   //authentication
   useEffect(() => {
@@ -31,10 +39,10 @@ const Applayout: React.FC = () => {
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div>
           <UserContext.Provider value={{ loggedInUser: "Keshav" }}>
-            <Header></Header>
+            {!hideLayout  && <Header />}
           </UserContext.Provider>
           <Outlet />
-          <Footer />
+          {!hideLayout && <Footer />}
         </div>
       </UserContext.Provider>
     </Provider>

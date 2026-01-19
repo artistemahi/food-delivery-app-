@@ -3,7 +3,6 @@ import { vegetable_right } from "./../utils/constants";
 import { vegetable_left } from "./../utils/constants";
 import { useState, useContext } from "react";
 import { Link } from "react-router";
- import {LOCATION_ICON} from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import {useSelector} from "react-redux";
@@ -71,7 +70,7 @@ const Header: React.FC = () => {
         </div>
 
         <div className="input-container">
-          <img className="w-6 h-6" src={LOCATION_ICON} alt="Location pin icon"/>
+        
           <input
             type="text"
             placeholder= " Enter your delivery location"
