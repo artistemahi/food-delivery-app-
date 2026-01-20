@@ -12,7 +12,7 @@ interface Menutype {
 const useRestaurantMenu = () => {
   const [MenuData, setMenuData] = useState<Menutype>();
   const { menuId } = useParams();
-  // console.log(menuId);
+  console.log(menuId);
   // Hook implementation goes here
   useEffect(() => {
     fetchMenu();
@@ -21,7 +21,7 @@ const useRestaurantMenu = () => {
     const data = await fetch(Menu_API + menuId);
     const json = await data.json();
     setMenuData(json);
-    // console.log(MenuData);
+    // console.log());
   };
 
   return MenuData;
